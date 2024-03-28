@@ -6,6 +6,7 @@
 
   imports = [
     ./cmp.nix
+    ./gitsigns.nix
     ./keymaps.nix
     ./lazygit.nix
     ./neo-tree.nix
@@ -77,7 +78,6 @@
       dashboard.enable = true;
       floaterm.enable = true;
       friendly-snippets.enable = true;
-      gitsigns.enable = true;
       indent-blankline.enable = true;
       lsp = {
         enable = true;
@@ -102,16 +102,14 @@
             options = {try_as_border = true;};
           };
           surround = {
-            options = {
-              mappings = {
-                add = "gsa";
-                delete = "gsd";
-                find = "gsf";
-                find_left = "gsF";
-                highlight = "gsh";
-                replace = "gsr";
-                update_n_lines = "gsn";
-              };
+            mappings = {
+              add = "gsa";
+              delete = "gsd";
+              find = "gsf";
+              find_left = "gsF";
+              highlight = "gsh";
+              replace = "gsr";
+              update_n_lines = "gsn";
             };
           };
           jump = {};
