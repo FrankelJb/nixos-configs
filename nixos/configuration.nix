@@ -36,11 +36,11 @@
   nixpkgs = {
     # You can add overlays here
     overlays = [
-      (final: prev: {
-        pipx = prev.pipx.overridePythonAttrs (oldAttrs: {
-          disabledTests = oldAttrs.disabledTests ++ ["test_skip_maintenance"];
-        });
-      })
+      # (final: prev: {
+      #   pipx = prev.pipx.overridePythonAttrs (oldAttrs: {
+      #     disabledTests = oldAttrs.disabledTests ++ ["test_skip_maintenance"];
+      #   });
+      # })
 
       inputs.rust-overlay.overlays.default
 
@@ -78,7 +78,6 @@
 
   # TODO: Set your hostname
   networking.hostName = "helium";
-
 
   # This setups a SSH server. Very important if you're setting up a headless system.
   # Feel free to remove if you don't need it.

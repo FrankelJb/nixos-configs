@@ -11,6 +11,8 @@
     ./lazygit.nix
     ./neo-tree.nix
     ./options.nix
+    ./telescope.nix
+    ./which-key.nix
   ];
 
   programs.nixvim = {
@@ -26,7 +28,6 @@
       nui-nvim
       nvim-web-devicons
       vim-startuptime
-      vim-sneak
       vim-vsnip
     ];
     globals.mapleader = " ";
@@ -78,6 +79,7 @@
       dashboard.enable = true;
       floaterm.enable = true;
       friendly-snippets.enable = true;
+      illuminate.enable = true;
       indent-blankline.enable = true;
       lsp = {
         enable = true;
@@ -101,6 +103,7 @@
             symbol = "│";
             options = {try_as_border = true;};
           };
+          pairs = {};
           surround = {
             mappings = {
               add = "gsa";
@@ -141,14 +144,15 @@
       nvim-colorizer.enable = true;
       persistence.enable = true;
       rainbow-delimiters.enable = true;
-      telescope.enable = true;
       treesitter = {
         enable = true;
         indent = true;
       };
       treesitter-textobjects.enable = true;
       treesitter-context.enable = true;
-      which-key.enable = true;
+      ts-context-commentstring.enable = true;
+      todo-comments.enable = true;
+      trouble.enable = true;
     };
   };
 }

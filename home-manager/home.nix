@@ -14,7 +14,7 @@
     # outputs.homeManagerModules.example
 
     # Or modules exported from other flakes (such as nix-colors):
-    inputs.nixneovim.nixosModules.default
+    inputs.nixvim.homeManagerModules.nixvim
 
     # You can also split up your configuration and import pieces of it here:
     ./ags
@@ -82,4 +82,3 @@
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "23.11";
 }
-
