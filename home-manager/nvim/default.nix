@@ -5,10 +5,13 @@
   ];
 
   imports = [
+    ./bufferline.nix
     ./cmp.nix
     ./gitsigns.nix
     ./keymaps.nix
     ./lazygit.nix
+    ./lsp.nix
+    ./mini.nix
     ./neo-tree.nix
     ./options.nix
     ./telescope.nix
@@ -26,6 +29,7 @@
       neoconf-nvim
       neodev-nvim
       nui-nvim
+      nvim-spectre
       nvim-web-devicons
       vim-startuptime
       vim-vsnip
@@ -33,29 +37,6 @@
     globals.mapleader = " ";
     # keymaps = import ./keymaps.nix;
     plugins = {
-      bufferline = {
-        enable = true;
-        closeCommand = "function(n) require(\"mini.bufremove\").delete(n, false) end";
-        rightMouseCommand = "function(n) require(\"mini.bufremove\").delete(n, false) end";
-        diagnostics = "nvim_lsp";
-        alwaysShowBufferline = false;
-        diagnosticsIndicator = ''
-          function(_, _, diag)
-            local icons = require("lazyvim.config").icons.diagnostics
-            local ret = (diag.error and icons.Error .. diag.error .. " " or "")
-              .. (diag.warning and icons.Warn .. diag.warning or "")
-            return vim.trim(ret)
-          end
-        '';
-        offsets = [
-          {
-            "filetype" = "neo-tree";
-            "text" = "Neo-tree";
-            "highlight" = "Directory";
-            "text_align" = "left";
-          }
-        ];
-      };
       conform-nvim = {
         enable = true;
         formatOnSave = ''
@@ -81,6 +62,7 @@
       friendly-snippets.enable = true;
       illuminate.enable = true;
       indent-blankline.enable = true;
+      lualine.enable = true;
       lsp = {
         enable = true;
         servers = {
@@ -89,38 +71,19 @@
           rust-analyzer.enable = true;
         };
       };
-      lualine.enable = true;
       luasnip = {
         enable = true;
       };
-      mini = {
-        enable = true;
-        modules = {
-          ai = {};
-          bufremove = {};
-          comment = {};
-          indentscope = {
-            symbol = "│";
-            options = {try_as_border = true;};
-          };
-          pairs = {};
-          surround = {
-            mappings = {
-              add = "gsa";
-              delete = "gsd";
-              find = "gsf";
-              find_left = "gsF";
-              highlight = "gsh";
-              replace = "gsr";
-              update_n_lines = "gsn";
-            };
-          };
-          jump = {};
-        };
-      };
       lightline.enable = true;
       lspkind.enable = true;
-      lint.enable = true;
+      lint = {
+        enable = true;
+        lintersByFt = {
+          nix = ["statix"];
+          lua = ["selene"];
+          python = ["flake8"];
+        };
+      };
       neogit.enable = true;
       noice = {
         enable = true;
