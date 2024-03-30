@@ -18,11 +18,13 @@
     ./options.nix
     ./telescope.nix
     ./which-key.nix
+    ./yanky.nix
   ];
 
   programs.nixvim = {
     enable = true;
     autoCmd = import ./autocmds.nix;
+    clipboard.register = "unnamedplus";
     colorschemes.tokyonight.enable = true;
     extraPlugins = with pkgs.vimPlugins; [
       dressing-nvim

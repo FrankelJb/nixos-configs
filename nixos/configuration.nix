@@ -16,17 +16,17 @@
     # You can also split up your configuration and import pieces of it here:
     ./bootloader.nix
     ./greetd.nix
-    # ./hardware.nix
+    ./hardware.nix
     ./network.nix
-    # ./nvidia.nix
+    # ./nvidia.nix this looks like a repeat of hardware.nix
     ./pipewire.nix
     ./program.nix
     ./security.nix
     ./services.nix
-    # ./steam.nix
-    # ./system.nix
+    ./steam.nix
+    ./system.nix
     ./user.nix
-    # ./virtualization.nix
+    ./virtualization.nix
     ./wayland.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
@@ -36,12 +36,6 @@
   nixpkgs = {
     # You can add overlays here
     overlays = [
-      # (final: prev: {
-      #   pipx = prev.pipx.overridePythonAttrs (oldAttrs: {
-      #     disabledTests = oldAttrs.disabledTests ++ ["test_skip_maintenance"];
-      #   });
-      # })
-
       inputs.rust-overlay.overlays.default
 
       # If you want to use overlays exported from other flakes:
@@ -85,7 +79,7 @@
     enable = true;
     settings = {
       # Forbid root login through SSH.
-      PermitRootLogin = "yes";
+      PermitRootLogin = "no";
       # Use keys only. Remove if you want to SSH using password (not recommended)
       PasswordAuthentication = false;
     };

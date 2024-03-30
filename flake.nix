@@ -11,21 +11,21 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    matugen.url = "github:InioX/matugen";
     ags.url = "github:Aylur/ags";
     astal.url = "github:Aylur/astal";
-
-    hypr-contrib.url = "github:hyprwm/contrib";
-    hyprpicker.url = "github:hyprwm/hyprpicker";
-
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
-
-    nix-gaming.url = "github:fufexan/nix-gaming";
 
     hyprland = {
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hypr-contrib.url = "github:hyprwm/contrib";
+    hypridle.url = "github:hyprwm/hypridle";
+    hyprpicker.url = "github:hyprwm/hyprpicker";
+
+    matugen.url = "github:InioX/matugen";
+
+    nix-gaming.url = "github:fufexan/nix-gaming";
 
     nixvim = {
       url = "github:nix-community/nixvim";

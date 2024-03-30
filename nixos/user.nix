@@ -6,7 +6,9 @@
   # TODO: get repo wide username working
   username = "beans";
 in {
-  imports = [inputs.home-manager.nixosModules.home-manager];
+  imports = [
+    inputs.home-manager.nixosModules.home-manager
+  ];
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
@@ -14,11 +16,14 @@ in {
     users.${username} = {
       imports = [
         inputs.nixvim.homeManagerModules.nixvim
+        inputs.hypridle.homeManagerModules.default
         (import ./../home-manager)
       ];
-      home.username = "${username}";
-      home.homeDirectory = "/home/${username}";
-      home.stateVersion = "22.11";
+      home = {
+        username = "${username}";
+        homeDirectory = "/home/${username}";
+        stateVersion = "22.11";
+      };
       programs.home-manager.enable = true;
     };
   };

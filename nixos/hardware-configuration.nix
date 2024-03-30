@@ -2,47 +2,54 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 {
+  config,
   lib,
+  pkgs,
   modulesPath,
   ...
 }: {
   imports = [
-    (modulesPath + "/profiles/qemu-guest.nix")
+    (modulesPath + "/installer/scan/not-detected.nix")
   ];
   boot = {
     initrd = {
-      availableKernelModules = ["ahci" "xhci_pci" "virtio_pci" "sr_mod" "virtio_blk"];
+      availableKernelModules = ["vmd" "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod"];
       kernelModules = [];
 
-      luks.devices."system".device = "/dev/disk/by-uuid/355a8c40-3859-4fe8-9090-95bb0e76cc52";
+      luks.devices."system".device = "/dev/disk/by-uuid/ead80a68-67f9-4524-b2b7-02434cfa72e5";
+      luks.devices."nvme1".device = "/dev/disk/by-uuid/b6812986-0baa-446e-aeff-b0ab60eab7c1";
     };
     kernelModules = ["kvm-intel"];
     extraModulePackages = [];
   };
-
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-uuid/f5128a33-4b33-4999-9b0f-fb8ec12e771f";
+      device = "/dev/disk/by-uuid/f278a852-799a-4a4a-8dcd-1a7dd2ea67d1";
       fsType = "btrfs";
-
-      options = ["subvol=root"];
+      options = ["subvol=root" "compress=zstd"];
     };
 
     "/home" = {
-      device = "/dev/disk/by-uuid/f5128a33-4b33-4999-9b0f-fb8ec12e771f";
+      device = "/dev/disk/by-uuid/f278a852-799a-4a4a-8dcd-1a7dd2ea67d1";
       fsType = "btrfs";
-      options = ["subvol=home"];
+      options = ["subvol=home" "compress=zstd"];
     };
 
     "/nix" = {
-      device = "/dev/disk/by-uuid/f5128a33-4b33-4999-9b0f-fb8ec12e771f";
+      device = "/dev/disk/by-uuid/f278a852-799a-4a4a-8dcd-1a7dd2ea67d1";
       fsType = "btrfs";
-      options = ["subvol=nix"];
+      options = ["subvol=nix" "noatime" "compress=std"];
     };
 
     "/boot" = {
-      device = "/dev/disk/by-uuid/0918-2FA8";
+      device = "/dev/disk/by-uuid/D30A-4A1A";
       fsType = "vfat";
+    };
+
+    "/data/nvme1" = {
+      device = "/dev/disk/by-uuid/7311782f-8aca-4974-94ea-5d5cf0a742f3";
+      fsType = "btrfs";
+      options = ["subvol=@storage"];
     };
   };
 
@@ -53,7 +60,9 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp1s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp5s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

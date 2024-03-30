@@ -1,9 +1,7 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
   pactl = "${pkgs.pulseaudio}/bin/pactl";
-in
-{
+in {
   wayland.windowManager.hyprland = {
     settings = {
       # assign apps
@@ -13,7 +11,7 @@ in
       "$file" = "dolphin";
       "$browser" = "firefox";
 
-      monitor = [ 
+      monitor = [
         ",preferred,auto,auto"
         "DP-3,2560x1440@240,0x0,1"
       ];
@@ -21,32 +19,32 @@ in
       env = [
         # Some default env vars.
         "XDG_CURRENT_DESKTOP,Hyprland"
-          "XDG_SESSION_TYPE,wayland"
-          "XDG_SESSION_DESKTOP,Hyprland"
-          "GDK_BACKEND,wayland"
-          "QT_QPA_PLATFORM,wayland"
-          "QT_QPA_PLATFORMTHEME,qt5ct"
-          "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
-          "QT_AUTO_SCREEN_SCALE_FACTOR,1"
-          "GBM_BACKEND,nvidia-drm"
-          "LIBVA_DRIVER_NAME,nvidia"
-          "__GLX_VENDOR_LIBRARY_NAME,nvidia"
-          "__GL_VRR_ALLOWED,1"
-          "WLR_NO_HARDWARE_CURSORS,1"
-          "WLR_DRM_NO_ATOMIC,1"
-          "WLR_DRM_DEVICES,/dev/dri/card0"
+        "XDG_SESSION_TYPE,wayland"
+        "XDG_SESSION_DESKTOP,Hyprland"
+        "GDK_BACKEND,wayland"
+        "QT_QPA_PLATFORM,wayland"
+        "QT_QPA_PLATFORMTHEME,qt5ct"
+        "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
+        "QT_AUTO_SCREEN_SCALE_FACTOR,1"
+        "GBM_BACKEND,nvidia-drm"
+        "LIBVA_DRIVER_NAME,nvidia"
+        "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+        "__GL_VRR_ALLOWED,1"
+        "WLR_NO_HARDWARE_CURSORS,1"
+        "WLR_DRM_NO_ATOMIC,1"
+        "WLR_DRM_DEVICES,/dev/dri/card1"
       ];
 
       # autostart
       exec-once = [
         "systemctl --user import-environment &"
-          "hash dbus-update-activation-environment 2>/dev/null &"
-          "dbus-update-activation-environment --systemd &"
-          "nm-applet &"
-          "wl-paste --primary --watch wl-copy --primary --clear"
-          "swaybg -m fill -i $(find ~/Pictures/wallpapers/ -maxdepth 1 -type f) &"
-          "hyprctl setcursor Nordzy-cursors 22 &"
-          "ags -b hypr"
+        "hash dbus-update-activation-environment 2>/dev/null &"
+        "dbus-update-activation-environment --systemd &"
+        "nm-applet &"
+        "wl-paste --primary --watch wl-copy --primary --clear"
+        "swaybg -m fill -i $(find ~/Pictures/wallpapers/ -maxdepth 1 -type f) &"
+        "hyprctl setcursor Nordzy-cursors 22 &"
+        "ags -b hypr"
       ];
 
       input = {
@@ -59,11 +57,11 @@ in
         disable_hyprland_logo = true;
         disable_splash_rendering = true;
         mouse_move_enables_dpms = true;
-        key_press_enables_dpms=true;
+        key_press_enables_dpms = true;
         vrr = 0;
         enable_swallow = true;
         no_direct_scanout = true; #for fullscreen games
-          focus_on_activate = true;
+        focus_on_activate = true;
       };
 
       general = {
@@ -130,29 +128,28 @@ in
 
         bezier = [
           "fluent_decel, 0, 0.2, 0.4, 1"
-            "easeOutCirc, 0, 0.55, 0.45, 1"
-            "easeOutCubic, 0.33, 1, 0.68, 1"
-            "easeinoutsine, 0.37, 0, 0.63, 1"
+          "easeOutCirc, 0, 0.55, 0.45, 1"
+          "easeOutCubic, 0.33, 1, 0.68, 1"
+          "easeinoutsine, 0.37, 0, 0.63, 1"
         ];
 
         animation = [
           # Windows
           "windowsIn, 1, 3, easeOutCubic, popin 30%" # window open
-            "windowsOut, 1, 3, fluent_decel, popin 70%" # window close.
-            "windowsMove, 1, 2, easeinoutsine, slide" # everything in between, moving, dragging, resizing.
+          "windowsOut, 1, 3, fluent_decel, popin 70%" # window close.
+          "windowsMove, 1, 2, easeinoutsine, slide" # everything in between, moving, dragging, resizing.
 
-            # Fade
-            "fadeIn, 1, 3, easeOutCubic"  # fade in (open) -> layers and windows
-            "fadeOut, 1, 2, easeOutCubic" # fade out (close) -> layers and windows
-            "fadeSwitch, 0, 1, easeOutCirc" # fade on changing activewindow and its opacity
-            "fadeShadow, 1, 10, easeOutCirc" # fade on changing activewindow for shadows
-            "fadeDim, 1, 4, fluent_decel" # the easing of the dimming of inactive windows
-            "border, 1, 2.7, easeOutCirc" # for animating the border's color switch speed
-            "borderangle, 1, 30, fluent_decel, once" # for animating the border's gradient angle - styles: once (default), loop
-            "workspaces, 1, 4, easeOutCubic, fade" # styles: slide, slidevert, fade, slidefade, slidefadevert
+          # Fade
+          "fadeIn, 1, 3, easeOutCubic" # fade in (open) -> layers and windows
+          "fadeOut, 1, 2, easeOutCubic" # fade out (close) -> layers and windows
+          "fadeSwitch, 0, 1, easeOutCirc" # fade on changing activewindow and its opacity
+          "fadeShadow, 1, 10, easeOutCirc" # fade on changing activewindow for shadows
+          "fadeDim, 1, 4, fluent_decel" # the easing of the dimming of inactive windows
+          "border, 1, 2.7, easeOutCirc" # for animating the border's color switch speed
+          "borderangle, 1, 30, fluent_decel, once" # for animating the border's gradient angle - styles: once (default), loop
+          "workspaces, 1, 4, easeOutCubic, fade" # styles: slide, slidevert, fade, slidefade, slidefadevert
         ];
       };
-
 
       bind = let
         binding = mod: cmd: key: arg: "${mod}, ${key}, ${cmd}, ${arg}";
@@ -165,123 +162,123 @@ in
         arr = [1 2 3 4 5 6 7 8 9];
       in [
         "$mainMod, Q, killactive"
-          "$mainMod ALT CTRL SHIFT, delete, exit," # kill hyperland session
-	  "CTRL SHIFT, R,  ${e} quit; ags -b hypr"
-          "$mainMod, W, togglefloating," # toggle the window on focus to float
-          "$mainMod, G, togglegroup," # toggle the window on focus to float
-          "$mainMod, F, fullscreen," # toggle the window on focus to fullscreen
-          "$mainMod, ESCAPE, ${e} -t powermenu" # logout menu
+        "$mainMod ALT CTRL SHIFT, delete, exit," # kill hyperland session
+        "$mainMod CTRL SHIFT, R,  ${e} quit; ags -b hypr"
+        "$mainMod, W, togglefloating," # toggle the window on focus to float
+        "$mainMod, G, togglegroup," # toggle the window on focus to float
+        "$mainMod, F, fullscreen," # toggle the window on focus to fullscreen
+        "$mainMod, ESCAPE, ${e} -t powermenu" # logout menu
 
-          # Application shortcuts
-          "$mainMod, RETURN, exec, $term"  # open terminal
-          "$mainMod, E, exec, $file" # open file manager
-          "$mainMod, C, exec, $editor" # open vscode
-          "$mainMod, B, exec, $browser" # open browser
-          "$CONTROL SHIFT, ESCAPE, exec, ~/.config/hypr/scripts/sysmonlaunch.sh"  # open htop/btop if installed or default to top (system monitor)
-          "$mainMod_SHIFT, F, fullscreen," # toggle the window on focus to fullscreen
-          "$mainMod, G, exec, $scriptsDir/gamemode.sh" # disable hypr effects for gamemode
-          "$mainMod ALT CTRL, P, exec, $scriptsDir/logoutlaunch.sh 1" # logout menu
-          "$mainMod, N, exec, swaync-client -t -sw"
+        # Application shortcuts
+        "$mainMod, RETURN, exec, $term" # open terminal
+        "$mainMod, E, exec, $file" # open file manager
+        "$mainMod, C, exec, $editor" # open vscode
+        "$mainMod, B, exec, $browser" # open browser
+        "$CONTROL SHIFT, ESCAPE, exec, ~/.config/hypr/scripts/sysmonlaunch.sh" # open htop/btop if installed or default to top (system monitor)
+        "$mainMod_SHIFT, F, fullscreen," # toggle the window on focus to fullscreen
+        "$mainMod, G, exec, $scriptsDir/gamemode.sh" # disable hypr effects for gamemode
+        "$mainMod ALT CTRL, P, exec, $scriptsDir/logoutlaunch.sh 1" # logout menu
+        "$mainMod, N, exec, swaync-client -t -sw"
 
-          # layout
-          "$mainMod_SHIFT, P, pseudo," # dwindle
-          "$mainMod_SHIFT, space, exec, $changeLayout"
-          "$mainMod_SHIFT, H, layoutmsg, orientationtop"
-          "$mainMod_SHIFT, V, layoutmsg, orientationnext"
-          "$mainMod CTRL, Return, layoutmsg, swapwithmaster"
+        # layout
+        "$mainMod_SHIFT, P, pseudo," # dwindle
+        "$mainMod_SHIFT, space, exec, $changeLayout"
+        "$mainMod_SHIFT, H, layoutmsg, orientationtop"
+        "$mainMod_SHIFT, V, layoutmsg, orientationnext"
+        "$mainMod CTRL, Return, layoutmsg, swapwithmaster"
 
-          "$mainMod, space, ${e} -t launcher" # launch desktop applications
-          "$mainMod, tab, ${e} -t overview"
-          "$mainMod SHIFT, tab, workspace, m-1"
+        "$mainMod, space, ${e} -t launcher" # launch desktop applications
+        "$mainMod, tab, ${e} -t overview"
+        "$mainMod SHIFT, tab, workspace, m-1"
 
-          # Screenshot/Screencapture
-          "$mainMod, P, exec, $scriptsDir/screenshot.sh s" # drag to snip an area / click on a window to print it
-          "$mainMod ALT, P, exec, $scriptsDir/screenshot.sh m" # print focused monitor
-          ",print, exec, $scriptsDir/screenshot.sh p"  # print all monitor outputs
+        # Screenshot/Screencapture
+        "$mainMod, P, ${e} -r 'recorder.screenshot()'" # drag to snip an area / click on a window to print it
+        "$mainMod ALT, P, ${e} -r 'recorder.screenshot(true)'" # print focused monitor
+        ",print, exec, $scriptsDir/screenshot.sh p" # print all monitor outputs
 
-          # Move (vim style)
-          "$mainMod CTRL, H, movewindow, l"
-          "$mainMod CTRL, L, movewindow, r"
-          "$mainMod CTRL, K, movewindow, u"
-          "$mainMod CTRL, J, movewindow, d"
+        # Move (vim style)
+        "$mainMod CTRL, H, movewindow, l"
+        "$mainMod CTRL, L, movewindow, r"
+        "$mainMod CTRL, K, movewindow, u"
+        "$mainMod CTRL, J, movewindow, d"
 
-          # Move focus with mainMod + arrow keys
-          "$mainMod, h, movefocus, l"
-          "$mainMod, j, movefocus, d"
-          "$mainMod, k, movefocus, u"
-          "$mainMod, l, movefocus, r"
+        # Move focus with mainMod + arrow keys
+        "$mainMod, h, movefocus, l"
+        "$mainMod, j, movefocus, d"
+        "$mainMod, k, movefocus, u"
+        "$mainMod, l, movefocus, r"
 
-          # Switch workspaces with mainMod + [0-9]
-          "$mainMod, 1, workspace, 1"
-          "$mainMod, 2, workspace, 2"
-          "$mainMod, 3, workspace, 3"
-          "$mainMod, 4, workspace, 4"
-          "$mainMod, 5, workspace, 5"
-          "$mainMod, 6, workspace, 6"
-          "$mainMod, 7, workspace, 7"
-          "$mainMod, 8, workspace, 8"
-          "$mainMod, 9, workspace, 9"
-          "$mainMod, 0, workspace, 10"
+        # Switch workspaces with mainMod + [0-9]
+        "$mainMod, 1, workspace, 1"
+        "$mainMod, 2, workspace, 2"
+        "$mainMod, 3, workspace, 3"
+        "$mainMod, 4, workspace, 4"
+        "$mainMod, 5, workspace, 5"
+        "$mainMod, 6, workspace, 6"
+        "$mainMod, 7, workspace, 7"
+        "$mainMod, 8, workspace, 8"
+        "$mainMod, 9, workspace, 9"
+        "$mainMod, 0, workspace, 10"
 
-          # Switch workspaces relative to the active workspace with mainMod + CTRL + [←→]
-          "$mainMod CTRL, right, workspace, r+1" 
-          "$mainMod CTRL, left, workspace, r-1"
+        # Switch workspaces relative to the active workspace with mainMod + CTRL + [←→]
+        "$mainMod CTRL, right, workspace, r+1"
+        "$mainMod CTRL, left, workspace, r-1"
 
-          # move to the first empty workspace instantly with mainMod + CTRL + [↓]
-          "$mainMod CTRL, down, workspace, empty" 
+        # move to the first empty workspace instantly with mainMod + CTRL + [↓]
+        "$mainMod CTRL, down, workspace, empty"
 
-          # Move active window to a workspace with mainMod + SHIFT + [0-9]
-          "$mainMod SHIFT, 1, movetoworkspace, 1"
-          "$mainMod SHIFT, 2, movetoworkspace, 2"
-          "$mainMod SHIFT, 3, movetoworkspace, 3"
-          "$mainMod SHIFT, 4, movetoworkspace, 4"
-          "$mainMod SHIFT, 5, movetoworkspace, 5"
-          "$mainMod SHIFT, 6, movetoworkspace, 6"
-          "$mainMod SHIFT, 7, movetoworkspace, 7"
-          "$mainMod SHIFT, 8, movetoworkspace, 8"
-          "$mainMod SHIFT, 9, movetoworkspace, 9"
-          "$mainMod SHIFT, 0, movetoworkspace, 10"
+        # Move active window to a workspace with mainMod + SHIFT + [0-9]
+        "$mainMod SHIFT, 1, movetoworkspace, 1"
+        "$mainMod SHIFT, 2, movetoworkspace, 2"
+        "$mainMod SHIFT, 3, movetoworkspace, 3"
+        "$mainMod SHIFT, 4, movetoworkspace, 4"
+        "$mainMod SHIFT, 5, movetoworkspace, 5"
+        "$mainMod SHIFT, 6, movetoworkspace, 6"
+        "$mainMod SHIFT, 7, movetoworkspace, 7"
+        "$mainMod SHIFT, 8, movetoworkspace, 8"
+        "$mainMod SHIFT, 9, movetoworkspace, 9"
+        "$mainMod SHIFT, 0, movetoworkspace, 10"
 
-          # Move active window to a relative workspace with mainMod + CTRL + ALT + [←→]
-          "$mainMod CTRL ALT, right, movetoworkspace, r+1"
-          "$mainMod CTRL ALT, left, movetoworkspace, r-1"
+        # Move active window to a relative workspace with mainMod + CTRL + ALT + [←→]
+        "$mainMod CTRL ALT, right, movetoworkspace, r+1"
+        "$mainMod CTRL ALT, left, movetoworkspace, r-1"
 
-          # Move active window around current workspace with mainMod + SHIFT + CTRL [←→↑↓]
-          "$mainMod SHIFT $CONTROL, left, movewindow, l"
-          "$mainMod SHIFT $CONTROL, right, movewindow, r"
-          "$mainMod SHIFT $CONTROL, up, movewindow, u"
-          "$mainMod SHIFT $CONTROL, down, movewindow, d"
+        # Move active window around current workspace with mainMod + SHIFT + CTRL [←→↑↓]
+        "$mainMod SHIFT $CONTROL, left, movewindow, l"
+        "$mainMod SHIFT $CONTROL, right, movewindow, r"
+        "$mainMod SHIFT $CONTROL, up, movewindow, u"
+        "$mainMod SHIFT $CONTROL, down, movewindow, d"
 
-          # Scroll through existing workspaces with mainMod + scroll
-          "$mainMod, mouse_down, workspace, e+1"
-          "$mainMod, mouse_up, workspace, e-1"
+        # Scroll through existing workspaces with mainMod + scroll
+        "$mainMod, mouse_down, workspace, e+1"
+        "$mainMod, mouse_up, workspace, e-1"
 
-          # Special workspaces (scratchpad)
-          "$mainMod ALT, S, movetoworkspacesilent, special"
-          "$mainMod, S, togglespecialworkspace,"
+        # Special workspaces (scratchpad)
+        "$mainMod ALT, S, movetoworkspacesilent, special"
+        "$mainMod, S, togglespecialworkspace,"
 
-          # Toggle Layout
-          "$mainMod Shift, J, togglesplit, # dwindle"
+        # Toggle Layout
+        "$mainMod Shift, J, togglesplit, # dwindle"
 
-          # Move window silently to workspace Super + Alt + [0-9]
-          "$mainMod ALT, 1, movetoworkspacesilent, 1"
-          "$mainMod ALT, 2, movetoworkspacesilent, 2"
-          "$mainMod ALT, 3, movetoworkspacesilent, 3"
-          "$mainMod ALT, 4, movetoworkspacesilent, 4"
-          "$mainMod ALT, 5, movetoworkspacesilent, 5"
-          "$mainMod ALT, 6, movetoworkspacesilent, 6"
-          "$mainMod ALT, 7, movetoworkspacesilent, 7"
-          "$mainMod ALT, 8, movetoworkspacesilent, 8"
-          "$mainMod ALT, 9, movetoworkspacesilent, 9"
-          "$mainMod ALT, 0, movetoworkspacesilent, 10"
-          ];
+        # Move window silently to workspace Super + Alt + [0-9]
+        "$mainMod ALT, 1, movetoworkspacesilent, 1"
+        "$mainMod ALT, 2, movetoworkspacesilent, 2"
+        "$mainMod ALT, 3, movetoworkspacesilent, 3"
+        "$mainMod ALT, 4, movetoworkspacesilent, 4"
+        "$mainMod ALT, 5, movetoworkspacesilent, 5"
+        "$mainMod ALT, 6, movetoworkspacesilent, 6"
+        "$mainMod ALT, 7, movetoworkspacesilent, 7"
+        "$mainMod ALT, 8, movetoworkspacesilent, 8"
+        "$mainMod ALT, 9, movetoworkspacesilent, 9"
+        "$mainMod ALT, 0, movetoworkspacesilent, 10"
+      ];
 
       binde = [
         # Resize windows
         "$mainMod SHIFT, right, resizeactive, 30 0"
-          "$mainMod SHIFT, left, resizeactive, -30 0"
-          "$mainMod SHIFT, up, resizeactive, 0 -30"
-          "$mainMod SHIFT, down, resizeactive, 0 30"
+        "$mainMod SHIFT, left, resizeactive, -30 0"
+        "$mainMod SHIFT, up, resizeactive, 0 -30"
+        "$mainMod SHIFT, down, resizeactive, 0 30"
       ];
 
       bindl = [
@@ -289,19 +286,17 @@ in
       ];
 
       bindle = [
-          ",XF86AudioRaiseVolume,  exec, ${pactl} set-sink-volume @DEFAULT_SINK@ +5%"
-          ",XF86AudioLowerVolume,  exec, ${pactl} set-sink-volume @DEFAULT_SINK@ -5%"
-          ",XF86MonBrightnessUp,   exec, ${brightnessctl} set +5%"
-          ",XF86MonBrightnessDown, exec, ${brightnessctl} set  5%-"
+        ",XF86AudioRaiseVolume,  exec, ${pactl} set-sink-volume @DEFAULT_SINK@ +5%"
+        ",XF86AudioLowerVolume,  exec, ${pactl} set-sink-volume @DEFAULT_SINK@ -5%"
+        ",XF86MonBrightnessUp,   exec, ${brightnessctl} set +5%"
+        ",XF86MonBrightnessDown, exec, ${brightnessctl} set  5%-"
       ];
 
       bindm = [
         # Move/Resize windows with mainMod + LMB/RMB and dragging
         "$mainMod, mouse:272, movewindow"
-          "$mainMod, mouse:273, resizewindow"
+        "$mainMod, mouse:273, resizewindow"
       ];
-
     };
   };
 }
-
