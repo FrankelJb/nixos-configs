@@ -5,12 +5,14 @@
   ];
 
   imports = [
-    ./bufferline.nix
+    # TODO: possibly move everything to lazy
+    ./barbar.nix
     ./cmp.nix
     ./gitsigns.nix
     ./keymaps.nix
     ./lazygit.nix
     ./lsp.nix
+    ./lualine.nix
     ./mini.nix
     ./neo-tree.nix
     ./options.nix
@@ -21,8 +23,6 @@
   programs.nixvim = {
     enable = true;
     autoCmd = import ./autocmds.nix;
-    # import ./autocmds.nix;
-    # to install plugins just activate their modules
     colorschemes.tokyonight.enable = true;
     extraPlugins = with pkgs.vimPlugins; [
       dressing-nvim
@@ -62,20 +62,6 @@
       friendly-snippets.enable = true;
       illuminate.enable = true;
       indent-blankline.enable = true;
-      lualine.enable = true;
-      lsp = {
-        enable = true;
-        servers = {
-          hls.enable = true;
-          nil_ls.enable = true;
-          rust-analyzer.enable = true;
-        };
-      };
-      luasnip = {
-        enable = true;
-      };
-      lightline.enable = true;
-      lspkind.enable = true;
       lint = {
         enable = true;
         lintersByFt = {
@@ -84,7 +70,8 @@
           python = ["flake8"];
         };
       };
-      neogit.enable = true;
+      lspkind.enable = true;
+      luasnip.enable = true;
       noice = {
         enable = true;
         lsp = {
@@ -100,6 +87,14 @@
           long_message_to_split = true;
           inc_rename = true;
         };
+        routes = [
+          {
+            view = "notify";
+            filter = {
+              event = "msg_showmode";
+            };
+          }
+        ];
       };
       none-ls.enable = true;
       notify.enable = true;
