@@ -47,6 +47,9 @@ in {
         "swaybg -m fill -i $(find ~/Pictures/wallpapers/ -maxdepth 1 -type f) &"
         "hyprctl setcursor Nordzy-cursors 22 &"
         "ags -b hypr"
+        "hypridle"
+        "[workspace 1 silent] firefox"
+        "[silent] signal-desktop"
       ];
 
       input = {
@@ -284,13 +287,10 @@ in {
         "$mainMod SHIFT, down, resizeactive, 0 30"
       ];
 
-      bindl = [
-        ",XF86AudioMute, exec, sound-toggle"
-      ];
-
       bindle = [
         ",XF86AudioRaiseVolume,  exec, ${pactl} set-sink-volume @DEFAULT_SINK@ +5%"
         ",XF86AudioLowerVolume,  exec, ${pactl} set-sink-volume @DEFAULT_SINK@ -5%"
+        ",XF86AudioMute, exec, ${pactl} set-sink-mute @DEFAULT_SINK@ toggle"
         ",XF86MonBrightnessUp,   exec, ${brightnessctl} set +5%"
         ",XF86MonBrightnessDown, exec, ${brightnessctl} set  5%-"
       ];
@@ -299,6 +299,16 @@ in {
         # Move/Resize windows with mainMod + LMB/RMB and dragging
         "$mainMod, mouse:272, movewindow"
         "$mainMod, mouse:273, resizewindow"
+      ];
+
+      windowrulev2 = [
+        "workspace 2 silent, class:^(VSCodium)$"
+        "workspace 2 silent, class:^(signal)$"
+        "workspace 3 silent, class:^(virt-manager)$"
+        # Steam rules
+        "workspace 5 silent, class:^(steam)$"
+        "fullscreen, class:^(steam)$,title:^(Steam Big Picture Mode)"
+        "idleinhibit fullscreen, class:^(steam_app.*)$"
       ];
     };
   };

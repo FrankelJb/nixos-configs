@@ -8,6 +8,7 @@
     entr # perform action when file change
     file # Show file information
     fzf # fuzzy finder
+    kubectl
     lazygit
     lolcat
     lsd
@@ -16,7 +17,9 @@
     pipx # Install Python applications in isolated environments
     ripgrep # grep replacement
     rust-bin.stable.latest.default
+    overskride
     signal-desktop
+    sops
     tealdeer
     toipe # typing test in the terminal
     typescript

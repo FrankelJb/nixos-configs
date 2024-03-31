@@ -7,6 +7,7 @@
     direnv
     glib
     grim
+    hypridle
     hyprpicker
     inputs.hypr-contrib.packages.${pkgs.system}.grimblast
     slurp

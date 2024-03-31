@@ -15,7 +15,8 @@
     ++ [(import ./kitty)]
     ++ [(import ./nvim)]
     ++ [(import ./package)]
-    ++ [(import ./scripts)] # personal scripts
+    ++ [(import ./scripts)]
     ++ [(import ./starship)]
+    ++ [(import ./vscodium)]
     ++ [(import ./zellij)];
 }

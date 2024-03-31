@@ -23,6 +23,11 @@
     ./plugins/yanky.nix
   ];
 
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    VISUAL = "nvim";
+  };
+
   programs.nixvim = {
     enable = true;
     autoCmd = import ./autocmds.nix;

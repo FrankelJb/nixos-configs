@@ -2,7 +2,7 @@
   fonts.fontconfig.enable = true;
   home.packages = [
     pkgs.nerdfonts
-    (pkgs.nerdfonts.override {fonts = ["JetBrainsMono" "CascadiaCode"];})
+    (pkgs.nerdfonts.override {fonts = ["CascadiaCode" "FiraCode" "JetBrainsMono"];})
     pkgs.twemoji-color-font
     pkgs.noto-fonts-emoji
   ];
@@ -11,7 +11,7 @@
     enable = true;
     font = {
       name = "JetBrainsMono Nerd Font";
-      size = 11;
+      size = 9;
     };
     iconTheme = {
       name = "Papirus-Dark";

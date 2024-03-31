@@ -2,10 +2,10 @@
   programs.kitty = {
     enable = true;
 
-    theme = "Catppuccin-Mocha";
+    theme = "Dracula";
 
     font = {
-      name = "CaskaydiaCove Nerd Font Mono";
+      name = "JetBrainsMono Nerd Font";
       size = 9;
     };
 
