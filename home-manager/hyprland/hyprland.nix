@@ -1,5 +1,8 @@
-{ inputs, pkgs, ...}: 
 {
+  inputs,
+  pkgs,
+  ...
+}: {
   home.packages = with pkgs; [
     direnv
     glib
@@ -9,12 +12,12 @@
     slurp
     swww
     wl-clipboard
-    # cliphist
+    cliphist
     wf-recorder
     wayland
     wofi
   ];
-  systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
+  systemd.user.targets.hyprland-session.Unit.Wants = ["xdg-desktop-autostart.target"];
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland = {
@@ -25,4 +28,3 @@
     systemd.enable = true;
   };
 }
-

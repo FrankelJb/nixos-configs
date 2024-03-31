@@ -39,6 +39,10 @@
     globals.mapleader = " ";
     # keymaps = import ./keymaps.nix;
     plugins = {
+      alpha = {
+        enable = true;
+        theme = "dashboard";
+      };
       conform-nvim = {
         enable = true;
         formatOnSave = ''
@@ -59,7 +63,6 @@
           "_" = ["trim_whitespace"];
         };
       };
-      dashboard.enable = true;
       floaterm.enable = true;
       friendly-snippets.enable = true;
       illuminate.enable = true;
@@ -113,6 +116,7 @@
       ts-context-commentstring.enable = true;
       todo-comments.enable = true;
       trouble.enable = true;
+      typescript-tools.enable = true;
     };
   };
 }

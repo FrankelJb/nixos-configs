@@ -6,7 +6,7 @@ in {
     settings = {
       # assign apps
       "$mainMod" = "SUPER";
-      "$term" = "kitty";
+      "$term" = "foot";
       "$editor" = "codium";
       "$file" = "dolphin";
       "$browser" = "firefox";
@@ -41,7 +41,8 @@ in {
         "hash dbus-update-activation-environment 2>/dev/null &"
         "dbus-update-activation-environment --systemd &"
         "nm-applet &"
-        "wl-paste --primary --watch wl-copy --primary --clear"
+        "wl-paste --type text --watch cliphist store" # clipboard store text data
+        "wl-paste --type image --watch cliphist store" # clipboard store image data
         "swaybg -m fill -i $(find ~/Pictures/wallpapers/ -maxdepth 1 -type f) &"
         "hyprctl setcursor Nordzy-cursors 22 &"
         "ags -b hypr"
@@ -67,8 +68,8 @@ in {
       general = {
         layout = "dwindle";
 
-        gaps_in = 0;
-        gaps_out = 0;
+        gaps_in = 5;
+        gaps_out = 5;
         border_size = 2;
         "col.active_border" = "rgb(cba6f7) rgb(94e2d5) 45deg";
         "col.inactive_border" = "0x00000000";
@@ -76,7 +77,7 @@ in {
       };
 
       dwindle = {
-        no_gaps_when_only = false;
+        no_gaps_when_only = true;
         force_split = 0;
         special_scale_factor = 1.0;
         split_width_multiplier = 1.0;

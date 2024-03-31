@@ -4,8 +4,6 @@
   ...
 }: {
   home.packages = with pkgs; [
-    rust-bin.stable.latest.default
-    signal-desktop
     entr # perform action when file change
     file # Show file information
     fzf # fuzzy finder
@@ -16,9 +14,11 @@
     nix-prefetch-github
     pipx # Install Python applications in isolated environments
     ripgrep # grep replacement
-    soundwireserver # pass audio to android phone
-    todo # cli todo list
+    rust-bin.stable.latest.default
+    signal-desktop
+    tealdeer
     toipe # typing test in the terminal
+    typescript
     cinnamon.nemo-with-extensions # file manager
     yazi # terminal file manager
     youtube-dl

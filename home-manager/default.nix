@@ -6,6 +6,7 @@
     ++ [(import ./cava)]
     ++ [(import ./fish)]
     ++ [(import ./firefox)]
+    ++ [(import ./foot)]
     ++ [(import ./git)]
     ++ [(import ./gtk)]
     ++ [(import ./hyprland)]

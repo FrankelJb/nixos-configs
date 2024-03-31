@@ -14,6 +14,7 @@
     ags.url = "github:Aylur/ags";
     astal.url = "github:Aylur/astal";
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
+    anyrun-cliphist.url = "github:benoitlouy/anyrun-cliphist";
 
     hyprland = {
       url = "github:hyprwm/Hyprland";
