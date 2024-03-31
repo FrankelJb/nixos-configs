@@ -5,21 +5,22 @@
   ];
 
   imports = [
-    # TODO: install session saving
-    # TODO: add rust configs
-    ./barbar.nix
-    ./cmp.nix
-    ./gitsigns.nix
     ./keymaps.nix
-    ./lazygit.nix
-    ./lsp.nix
-    ./lualine.nix
-    ./mini.nix
-    ./neo-tree.nix
     ./options.nix
-    ./telescope.nix
-    ./which-key.nix
-    ./yanky.nix
+    # TODO: install session saving
+    ./plugins/barbar.nix
+    ./plugins/cmp.nix
+    ./plugins/gitsigns.nix
+    ./plugins/lazygit.nix
+    ./plugins/lsp.nix
+    ./plugins/lualine.nix
+    ./plugins/mini.nix
+    ./plugins/neo-tree.nix
+    ./plugins/rustaceanvim.nix
+    ./plugins/telescope.nix
+    ./plugins/todo-comments.nix
+    ./plugins/which-key.nix
+    ./plugins/yanky.nix
   ];
 
   programs.nixvim = {
@@ -64,6 +65,7 @@
           "_" = ["trim_whitespace"];
         };
       };
+      crates-nvim.enable = true;
       floaterm.enable = true;
       friendly-snippets.enable = true;
       illuminate.enable = true;
@@ -115,7 +117,6 @@
       treesitter-textobjects.enable = true;
       treesitter-context.enable = true;
       ts-context-commentstring.enable = true;
-      todo-comments.enable = true;
       trouble.enable = true;
       typescript-tools.enable = true;
     };

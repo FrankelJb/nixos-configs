@@ -6,7 +6,7 @@ in {
     settings = {
       # assign apps
       "$mainMod" = "SUPER";
-      "$term" = "foot";
+      "$term" = "kitty";
       "$editor" = "codium";
       "$file" = "dolphin";
       "$browser" = "firefox";
