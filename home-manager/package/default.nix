@@ -4,6 +4,7 @@
   ...
 }: {
   home.packages = with pkgs; [
+    bottom
     entr # perform action when file change
     file # Show file information
     fzf # fuzzy finder

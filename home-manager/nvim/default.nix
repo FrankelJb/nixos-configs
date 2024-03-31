@@ -5,7 +5,8 @@
   ];
 
   imports = [
-    # TODO: possibly move everything to lazy
+    # TODO: install session saving
+    # TODO: add rust configs
     ./barbar.nix
     ./cmp.nix
     ./gitsigns.nix

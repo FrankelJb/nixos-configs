@@ -17,6 +17,7 @@ in {
       ];
 
       env = [
+        # TODO: merge these with variables.nix
         # Some default env vars.
         "XDG_CURRENT_DESKTOP,Hyprland"
         "XDG_SESSION_TYPE,wayland"
@@ -175,6 +176,7 @@ in {
         "$mainMod, E, exec, $file" # open file manager
         "$mainMod, C, exec, $editor" # open vscode
         "$mainMod, B, exec, $browser" # open browser
+        "$mainMod, V, exec, anyrun" # open anyrun for clipboard
         "$CONTROL SHIFT, ESCAPE, exec, ~/.config/hypr/scripts/sysmonlaunch.sh" # open htop/btop if installed or default to top (system monitor)
         "$mainMod_SHIFT, F, fullscreen," # toggle the window on focus to fullscreen
         "$mainMod, G, exec, $scriptsDir/gamemode.sh" # disable hypr effects for gamemode

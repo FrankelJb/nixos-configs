@@ -15,8 +15,9 @@ in {
     extraSpecialArgs = {inherit inputs username;};
     users.${username} = {
       imports = [
-        inputs.nixvim.homeManagerModules.nixvim
         inputs.hypridle.homeManagerModules.default
+        inputs.hyprland.homeManagerModules.default
+        inputs.nixvim.homeManagerModules.nixvim
         (import ./../home-manager)
       ];
       home = {

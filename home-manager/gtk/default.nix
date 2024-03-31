@@ -2,7 +2,7 @@
   fonts.fontconfig.enable = true;
   home.packages = [
     pkgs.nerdfonts
-    (pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];})
+    (pkgs.nerdfonts.override {fonts = ["JetBrainsMono" "CascadiaCode"];})
     pkgs.twemoji-color-font
     pkgs.noto-fonts-emoji
   ];

@@ -4,7 +4,7 @@
     keymaps = {
       silent = true;
 
-      next = "<S-h>";
+      next = "<S-l>";
       previous = "<S-h>";
       close = "<leader>bc";
     };

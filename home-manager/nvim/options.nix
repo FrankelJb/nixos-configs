@@ -1,6 +1,6 @@
 {
   programs.nixvim = {
-    options = {
+    opts = {
       completeopt = "menu,menuone,noselect";
       conceallevel = 2; # Hide * markup for bold and italic, but not markers with substitutions
       confirm = true; # Confirm to save changes before exiting modified buffer

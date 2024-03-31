@@ -1,6 +1,8 @@
 {inputs, ...}: {
   imports =
     [(import ./ags)]
+    ++ [(import ./anyrun)]
+    ++ [(import ./atuin)]
     ++ [(import ./bash)]
     ++ [(import ./bat)]
     ++ [(import ./cava)]
