@@ -14,6 +14,7 @@
     # inputs.hardware.nixosModules.common-ssd
 
     # You can also split up your configuration and import pieces of it here:
+    ./applications.nix
     ./bootloader.nix
     ./greetd.nix
     ./hardware.nix

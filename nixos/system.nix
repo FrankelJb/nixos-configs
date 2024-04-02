@@ -27,9 +27,10 @@
   # };
 
   environment.systemPackages = with pkgs; [
-    wget
     git
     home-manager
+    usbutils
+    wget
   ];
 
   time.timeZone = "Asia/Singapore";
