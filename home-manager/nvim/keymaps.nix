@@ -35,6 +35,38 @@
         silent = true;
       };
     }
+
+    # -- buffers
+    {
+      action = "<cmd>bprevious<cr>";
+      key = "<S-h>";
+      options.desc = "Prev buffer";
+    }
+    {
+      action = "<cmd>bnext<cr>";
+      key = "<S-l>";
+      options.desc = "Next buffer";
+    }
+    {
+      action = "<cmd>bprevious<cr>";
+      key = "[b";
+      options.desc = "Prev buffer";
+    }
+    {
+      action = "<cmd>bnext<cr>";
+      key = "]b";
+      options.desc = "Next buffer";
+    }
+    {
+      action = "<cmd>e #<cr>";
+      key = "<leader>bb";
+      options.desc = "Switch to Other Buffer";
+    }
+    {
+      action = "<cmd>e #<cr>";
+      key = "<leader>`";
+      options.desc = "Switch to Other Buffer";
+    }
   ];
 }
 # -- better up/down
@@ -63,13 +95,6 @@
 # map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
 # map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 #
-# -- buffers
-# map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
-# map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
-# map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
-# map("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
-# map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
-# map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 #
 # -- Clear search with <esc>
 # map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })

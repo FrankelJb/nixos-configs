@@ -15,12 +15,22 @@
           action = "signature_help";
           desc = "Signature Help";
         };
+        "gr" = {
+          action = "references";
+          desc = "Goto References";
+        };
         "<leader>ca" = {
           action = "code_action";
           desc = "Code Action";
         };
+
+        "<leader>cr" = {
+          action = "rename";
+          desc = "Replace";
+        };
       };
       servers = {
+        denols.enable = true;
         lua-ls.enable = true;
         nil_ls.enable = true;
         rust-analyzer = {
