@@ -48,6 +48,11 @@
 
     rust-overlay.url = "github:oxalica/rust-overlay";
 
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     catppuccin-bat = {
       url = "github:catppuccin/bat";
       flake = false;
@@ -63,7 +68,7 @@
 
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!
-    # nix-colors.url = "github:misterio77/nix-colors";
+    # nix-colorsurl = "github:misterio77/nix-colors";
   };
 
   outputs = {

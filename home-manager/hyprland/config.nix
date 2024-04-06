@@ -22,7 +22,6 @@ in {
         "XDG_CURRENT_DESKTOP,Hyprland"
         "XDG_SESSION_TYPE,wayland"
         "XDG_SESSION_DESKTOP,Hyprland"
-        "GDK_BACKEND,wayland"
         "QT_QPA_PLATFORM,wayland"
         "QT_QPA_PLATFORMTHEME,qt5ct"
         "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
@@ -288,7 +287,7 @@ in {
           columns = 3;
           gap_size = 5;
           bg_col = "rgb(232323)";
-          workspace_method = "first current";
+          workspace_method = "center current";
           enable_gesture = true;
           gesture_distance = 300;
           gesture_positive = false;
