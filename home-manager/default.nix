@@ -1,4 +1,13 @@
-{inputs, ...}: {
+{...}: {
+  xdg.mimeApps = {
+    enable = true;
+    associations.added = {
+      "inode/directory" = ["org.gnome.Nautilus.desktop"];
+    };
+    defaultApplications = {
+      "inode/directory" = ["org.gnome.Nautilus.desktop"];
+    };
+  };
   imports =
     [(import ./ags)]
     ++ [(import ./anyrun)]
