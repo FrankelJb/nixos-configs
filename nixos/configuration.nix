@@ -18,6 +18,7 @@
     ./bootloader.nix
     ./greetd.nix
     ./hardware.nix
+    ./ios.nix
     ./network.nix
     # ./nvidia.nix this looks like a repeat of hardware.nix
     ./pipewire.nix

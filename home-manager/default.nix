@@ -3,11 +3,19 @@
     enable = true;
     associations.added = {
       "inode/directory" = ["org.gnome.Nautilus.desktop"];
+      "text/plain" = ["Neovide.desktop"];
     };
     defaultApplications = {
       "inode/directory" = ["org.gnome.Nautilus.desktop"];
+      "text/plain" = ["Neovide.desktop"];
     };
   };
+
+  home.sessionVariables = {
+    RESTIC_PASSWORD_FILE = "/run/secrets/restic";
+    RUSTIC_PASSWORD_FILE = "/run/secrets/restic";
+  };
+
   imports =
     [(import ./ags)]
     ++ [(import ./anyrun)]

@@ -15,9 +15,11 @@
     initrd = {
       availableKernelModules = ["vmd" "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod"];
       kernelModules = [];
-
-      luks.devices."system".device = "/dev/disk/by-uuid/ead80a68-67f9-4524-b2b7-02434cfa72e5";
-      luks.devices."nvme1".device = "/dev/disk/by-uuid/b6812986-0baa-446e-aeff-b0ab60eab7c1";
+      luks.devices = {
+        "system".device = "/dev/disk/by-uuid/ead80a68-67f9-4524-b2b7-02434cfa72e5";
+        "nvme1".device = "/dev/disk/by-uuid/b6812986-0baa-446e-aeff-b0ab60eab7c1";
+        "nvme2".device = "/dev/disk/by-uuid/5a4efd4c-30df-416d-93c5-01623ed58ba1";
+      };
     };
     kernelModules = ["kvm-intel"];
     extraModulePackages = [];
@@ -49,7 +51,13 @@
     "/data/nvme1" = {
       device = "/dev/disk/by-uuid/7311782f-8aca-4974-94ea-5d5cf0a742f3";
       fsType = "btrfs";
-      options = ["subvol=@storage"];
+      options = ["subvol=@storage" "compress=zstd"];
+    };
+
+    "/data/nvme2" = {
+      device = "/dev/disk/by-uuid/9168a63d-3d54-4aa6-bb90-34abe5ac62a9";
+      fsType = "btrfs";
+      options = ["subvol=@storage" "compress=zstd"];
     };
   };
 
