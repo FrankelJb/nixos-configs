@@ -1,8 +1,8 @@
 import { dependencies } from "lib/utils";
-import PopupWindow, { Padding } from "widget/PopupWindow";
 import options from "options";
 import path from "path";
 import RegularWindow from "widget/RegularWindow";
+import PopupWindow, { Padding }  from "widget/PopupWindow";
 
 const { width, margin } = options.launcher;
 const regexp = /^\[\[ binary data .* \]\]/;
@@ -165,7 +165,7 @@ function ClipLauncher() {
     on_accept: () => {
       cliplauncher.launchItem();
 
-      App.toggleWindow("cliplauncher");
+      App.closeWindow("cliplauncher");
       entry.text = "";
     },
     on_change: ({ text }) => generateCliphistList(text),

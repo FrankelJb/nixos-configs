@@ -1,8 +1,8 @@
-import { type BarWidget } from "widget/bar/Bar"
-import { opt, mkOptions } from "lib/option"
-import { distro } from "lib/variables"
-import { icon } from "lib/utils"
-import icons from "lib/icons"
+import { type BarWidget } from "widget/bar/Bar";
+import { mkOptions, opt } from "lib/option";
+import { distro } from "lib/variables";
+import { icon } from "lib/utils";
+import icons from "lib/icons";
 
 const options = mkOptions(OPTIONS, {
   autotheme: opt(false),
@@ -89,7 +89,7 @@ const options = mkOptions(OPTIONS, {
     launcher: {
       icon: {
         colored: opt(true),
-        icon: opt(icon(distro, icons.ui.search)),
+        icon: opt(icon(distro.logo, icons.ui.search)),
       },
       label: {
         colored: opt(false),
@@ -141,6 +141,9 @@ const options = mkOptions(OPTIONS, {
   launcher: {
     width: opt(0),
     margin: opt(80),
+    clip: {
+      max: opt(80),
+    },
     nix: {
       pkgs: opt("nixpkgs/nixos-unstable"),
       max: opt(8),
@@ -221,7 +224,7 @@ const options = mkOptions(OPTIONS, {
     inactiveBorder: opt("333333ff"),
     gapsWhenOnly: opt(false),
   },
-})
+});
 
-globalThis["options"] = options
-export default options
+globalThis["options"] = options;
+export default options;

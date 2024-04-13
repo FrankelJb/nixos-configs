@@ -44,7 +44,7 @@ in {
         "wl-paste --type text --watch cliphist store" # clipboard store text data
         "wl-paste --type image --watch cliphist store" # clipboard store image data
         "swaybg -m fill -i $(find ~/Pictures/wallpapers/ -maxdepth 1 -type f) &"
-        "hyprctl setcursor Nordzy-cursors 22 &"
+        "hyprctl setcursor Bibata-Modern-Classic 24 &"
         "ags -b hypr"
         "hypridle"
         "[workspace 1 silent] firefox"
@@ -150,7 +150,8 @@ in {
         "$mainMod, E, exec, $file" # open file manager
         "$mainMod, C, exec, $editor" # open vscode
         "$mainMod, B, exec, $browser" # open browser
-        "$mainMod, V, exec, anyrun" # open anyrun for clipboard
+        # "$mainMod, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy" # open anyrun for clipboard
+        "$mainMod, V, ${e} -t cliplauncher" # launch ags cliplist
         "$CONTROL SHIFT, ESCAPE, exec, ~/.config/hypr/scripts/sysmonlaunch.sh" # open htop/btop if installed or default to top (system monitor)
         "$mainMod_SHIFT, F, fullscreen," # toggle the window on focus to fullscreen
         "$mainMod, G, exec, $scriptsDir/gamemode.sh" # disable hypr effects for gamemode
@@ -165,7 +166,8 @@ in {
         "$mainMod CTRL, Return, layoutmsg, swapwithmaster"
 
         "$mainMod, space, ${e} -t launcher" # launch desktop applications
-        "$mainMod, tab, hyprexpo:expo, toggle"
+        # "$mainMod, tab, hyprexpo:expo, toggle"
+        "$mainMod, tab, workspace, m+1"
         "$mainMod SHIFT, tab, workspace, m-1"
 
         # Screenshot/Screencapture
@@ -280,19 +282,20 @@ in {
         "workspace 5 silent, class:^(steam)$"
         "fullscreen, class:^(steam)$,title:^(Steam Big Picture Mode)"
         "idleinhibit fullscreen, class:^(steam_app.*)$"
+        "idleinhibit always, class:^(.*Twitch.*)$"
       ];
 
-      plugin = {
-        hyprexpo = {
-          columns = 3;
-          gap_size = 5;
-          bg_col = "rgb(232323)";
-          workspace_method = "center current";
-          enable_gesture = true;
-          gesture_distance = 300;
-          gesture_positive = false;
-        };
-      };
+      # plugin = {
+      #   hyprexpo = {
+      #     columns = 3;
+      #     gap_size = 5;
+      #     bg_col = "rgb(232323)";
+      #     workspace_method = "center current";
+      #     enable_gesture = true;
+      #     gesture_distance = 300;
+      #     gesture_positive = false;
+      #   };
+      # };
     };
   };
 }

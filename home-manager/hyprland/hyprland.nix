@@ -27,7 +27,7 @@ in {
       enable = true;
       # hidpi = true;
     };
-    plugins = with plugins; [hyprexpo];
+    # plugins = with plugins; [hyprexpo];
     # enableNvidiaPatches = false;
     systemd.enable = true;
   };
