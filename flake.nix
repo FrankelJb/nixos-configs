@@ -81,7 +81,10 @@
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
       helium = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
+        specialArgs = {
+          inherit inputs outputs;
+          asztal = self.packages.x86_64-linux.default;
+        };
         # > Our main nixos configuration file <
         modules = [./nixos/configuration.nix];
       };

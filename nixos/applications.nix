@@ -6,6 +6,7 @@
     neovide
     restic
     rustic-rs
+    pavucontrol
     qbittorrent
     usbutils
   ];

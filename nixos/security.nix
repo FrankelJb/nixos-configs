@@ -1,6 +1,14 @@
-{ ... }: 
-{
-  security.rtkit.enable = true;
-  security.sudo.enable = true;
-  security.pam.services.swaylock = { };
+{pkgs, ...}: {
+  environment.systemPackages = with pkgs; [
+    pam_u2f
+  ];
+  security = {
+    rtkit.enable = true;
+    sudo.enable = true;
+    pam.services = {
+      login.u2fAuth = true;
+      sudo.u2fAuth = true;
+      swaylock = {};
+    };
+  };
 }
