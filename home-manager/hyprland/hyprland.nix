@@ -2,9 +2,7 @@
   inputs,
   pkgs,
   ...
-}: let
-  plugins = inputs.hyprland-plugins.packages.${pkgs.system};
-in {
+}: {
   home.packages = with pkgs; [
     direnv
     glib
@@ -27,7 +25,8 @@ in {
       enable = true;
       # hidpi = true;
     };
-    # plugins = with plugins; [hyprexpo];
+    # plugins = [inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo];
+    plugins = [inputs.Hyprspace.packages.${pkgs.system}.Hyprspace];
     # enableNvidiaPatches = false;
     systemd.enable = true;
   };

@@ -11,6 +11,8 @@ in {
       "$file" = "dolphin";
       "$browser" = "firefox";
 
+      debug = {"disable_logs" = false;};
+
       monitor = [
         ",preferred,auto,auto"
         "DP-3,2560x1440@240,0x0,1"
@@ -153,10 +155,6 @@ in {
         # "$mainMod, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy" # open anyrun for clipboard
         "$mainMod, V, ${e} -t cliplauncher" # launch ags cliplist
         "$CONTROL SHIFT, ESCAPE, exec, ~/.config/hypr/scripts/sysmonlaunch.sh" # open htop/btop if installed or default to top (system monitor)
-        "$mainMod_SHIFT, F, fullscreen," # toggle the window on focus to fullscreen
-        "$mainMod, G, exec, $scriptsDir/gamemode.sh" # disable hypr effects for gamemode
-        "$mainMod ALT CTRL, P, exec, $scriptsDir/logoutlaunch.sh 1" # logout menu
-        "$mainMod, N, exec, swaync-client -t -sw"
 
         # layout
         "$mainMod_SHIFT, P, pseudo," # dwindle
@@ -167,6 +165,7 @@ in {
 
         "$mainMod, space, ${e} -t launcher" # launch desktop applications
         # "$mainMod, tab, hyprexpo:expo, toggle"
+        "$mainMod_SHIFT, SPACE, overview:toggle" # toggle the window on focus to fullscreen
         "$mainMod, tab, workspace, m+1"
         "$mainMod SHIFT, tab, workspace, m-1"
 

@@ -14,8 +14,6 @@
     ags.url = "github:Aylur/ags";
     astal.url = "github:Aylur/astal";
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
-    anyrun-cliphist.url = "github:benoitlouy/anyrun-cliphist";
-    anyrun.url = "github:Kirottu/anyrun";
 
     hyprland = {
       url = "github:hyprwm/Hyprland";
@@ -29,12 +27,12 @@
     hypridle.url = "github:hyprwm/hypridle";
     hyprpicker.url = "github:hyprwm/hyprpicker";
 
-    matugen.url = "github:InioX/matugen";
-
-    nh = {
-      url = "github:viperML/nh";
-      inputs.nixpkgs.follows = "nixpkgs"; # override this repo's nixpkgs snapshot
+    Hyprspace = {
+      url = "github:KZDKM/Hyprspace";
+      inputs.hyprland.follows = "hyprland";
     };
+
+    matugen.url = "github:InioX/matugen";
 
     nix-gaming.url = "github:fufexan/nix-gaming";
 

@@ -1,12 +1,8 @@
-{inputs, ...}: {
-  imports = [
-    inputs.nh.nixosModules.default
-  ];
-
+{...}: {
   # nh default flake
   environment.variables.FLAKE = "/home/beans/projects/nixos-configs";
 
-  nh = {
+  programs.nh = {
     enable = true;
     # weekly cleanup
     clean = {
