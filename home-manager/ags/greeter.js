@@ -1,18 +1,36 @@
-const main = "/tmp/ags/greeter.js"
-const entry = `${App.configDir}/greeter/greeter.ts`
+const greetd = await Service.import("greetd");
 
-try {
-    await Utils.execAsync([
-        "bun", "build", entry,
-        "--outfile", main,
-        "--external", "resource://*",
-        "--external", "gi://*",
-        "--external", "file://*",
-    ])
-    await import(`file://${main}`)
-} catch (error) {
-    console.error(error)
-    App.quit()
-}
+const name = Widget.Entry({
+  placeholder_text: "Username",
+  on_accept: () => password.grab_focus(),
+});
 
-export { }
+const password = Widget.Entry({
+  placeholder_text: "Password",
+  visibility: false,
+  on_accept: () => {
+    greetd.login(name.text || "", password.text || "", "Hyprland")
+      .catch((err) => response.label = JSON.stringify(err));
+  },
+});
+
+const response = Widget.Label();
+
+const win = Widget.Window({
+  css: "background-color: transparent;",
+  anchor: ["top", "left", "right", "bottom"],
+  child: Widget.Box({
+    vertical: true,
+    hpack: "center",
+    vpack: "center",
+    hexpand: true,
+    vexpand: true,
+    children: [
+      name,
+      password,
+      response,
+    ],
+  }),
+});
+
+App.config({ windows: [win] });
