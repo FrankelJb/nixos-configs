@@ -12,11 +12,11 @@
         enable = true;
         settings = {
           completion.completeopt = "menu,menuone,noinsert";
-          experimental = {
-            ghost_text = {
-              hl_group = true;
-            };
-          };
+          # experimental = {
+          #   ghost_text = {
+          #     hl_group = true;
+          #   };
+          # };
           formatting = {
             fields = ["kind" "abbr" "menu"];
             expandableIndicator = true;

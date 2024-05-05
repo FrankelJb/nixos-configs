@@ -7,6 +7,7 @@
     bottom
     entr # perform action when file change
     file # Show file information
+    fluxcd
     fzf # fuzzy finder
     kubectl
     lazygit

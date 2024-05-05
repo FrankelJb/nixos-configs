@@ -3,6 +3,10 @@
   lib,
   ...
 }: {
+  environment.systemPackages = [
+    pkgs.lutris-free
+    pkgs.wine
+  ];
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;

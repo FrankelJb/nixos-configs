@@ -27,10 +27,10 @@
     hypridle.url = "github:hyprwm/hypridle";
     hyprpicker.url = "github:hyprwm/hyprpicker";
 
-    Hyprspace = {
-      url = "github:KZDKM/Hyprspace";
-      inputs.hyprland.follows = "hyprland";
-    };
+    # Hyprspace = {
+    #   url = "github:KZDKM/Hyprspace";
+    #   inputs.hyprland.follows = "hyprland";
+    # };
 
     matugen.url = "github:InioX/matugen";
 

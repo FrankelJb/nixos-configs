@@ -1,17 +1,23 @@
-{ config, pkgs, username, ... }:
 {
+  config,
+  pkgs,
+  username,
+  ...
+}: {
   # Add user to libvirtd group
-  users.users.beans.extraGroups = [ "libvirtd" ];
+  users.users.beans.extraGroups = ["libvirtd"];
 
   # Install necessary packages
   environment.systemPackages = with pkgs; [
+    gnome.adwaita-icon-theme
+    spice
+    spice-gtk
+    spice-protocol
     virt-manager
     virt-viewer
-    spice spice-gtk
-    spice-protocol
+    virtiofsd
     win-virtio
     win-spice
-    gnome.adwaita-icon-theme
   ];
 
   # Manage the virtualisation services
@@ -21,7 +27,7 @@
       qemu = {
         swtpm.enable = true;
         ovmf.enable = true;
-        ovmf.packages = [ pkgs.OVMFFull.fd ];
+        ovmf.packages = [pkgs.OVMFFull.fd];
       };
     };
     spiceUSBRedirection.enable = true;

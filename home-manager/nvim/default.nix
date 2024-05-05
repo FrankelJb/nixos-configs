@@ -64,6 +64,7 @@
           nix = ["alejandra"];
           python = ["isort" "black"];
           typescript = [["prettierd" "prettier"]];
+          yaml = ["yamlls"];
           # Use the "*" filetype to run formatters on all filetypes.
           "*" = ["codespell"];
           # Use the "_" filetype to run formatters on filetypes that don't
@@ -125,6 +126,7 @@
       ts-context-commentstring.enable = true;
       trouble.enable = true;
       typescript-tools.enable = true;
+      typst-vim.enable = true;
     };
   };
 }

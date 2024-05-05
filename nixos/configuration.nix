@@ -16,6 +16,7 @@
     # You can also split up your configuration and import pieces of it here:
     ./applications.nix
     ./bootloader.nix
+    ./gaming.nix
     ./greetd.nix
     ./hardware.nix
     ./ios.nix
@@ -26,7 +27,6 @@
     ./security.nix
     ./services.nix
     ./sops.nix
-    ./steam.nix
     ./system.nix
     ./user.nix
     ./virtualization.nix

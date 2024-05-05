@@ -8,7 +8,7 @@ in {
       "$mainMod" = "SUPER";
       "$term" = "kitty";
       "$editor" = "codium";
-      "$file" = "dolphin";
+      "$file" = "nautilus";
       "$browser" = "firefox";
 
       debug = {"disable_logs" = false;};
@@ -165,7 +165,7 @@ in {
 
         "$mainMod, space, ${e} -t launcher" # launch desktop applications
         # "$mainMod, tab, hyprexpo:expo, toggle"
-        "$mainMod_SHIFT, SPACE, overview:toggle" # toggle the window on focus to fullscreen
+        # "ALT, SPACE, overview:toggle" # toggle the window on focus to fullscreen
         "$mainMod, tab, workspace, m+1"
         "$mainMod SHIFT, tab, workspace, m-1"
 

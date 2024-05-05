@@ -1,20 +1,20 @@
-{ pkgs, ... }: 
-{
+{pkgs, ...}: {
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
-      userSettings = {
-        "editor.bracketPairColorization.enabled" = true;
-        "explorer.decorations.badges" = true;
-        "explorer.decorations.colors" = true;
-        "editor.fontLigatures" = true;
-        "editor.fontFamily" = "Fira Code";
-        "editor.formatOnSave" = true;
-        "editor.formatOnType" = true;
-        "editor.minimap.enabled" = false;
-        "editor.wordWrap" = "on";
-        "editor.lineNumbers" = "relative";
-        "latex-workshop.latex.tools" = [{
+    userSettings = {
+      "editor.bracketPairColorization.enabled" = true;
+      "explorer.decorations.badges" = true;
+      "explorer.decorations.colors" = true;
+      "editor.fontLigatures" = true;
+      "editor.fontFamily" = "Fira Code";
+      "editor.formatOnSave" = true;
+      "editor.formatOnType" = true;
+      "editor.minimap.enabled" = false;
+      "editor.wordWrap" = "on";
+      "editor.lineNumbers" = "relative";
+      "latex-workshop.latex.tools" = [
+        {
           "name" = "latexmk";
           "command" = "latexmk";
           "args" = [
@@ -24,31 +24,33 @@
             "-file-line-error"
             "%DOC%"
           ];
-        }];
-        "redhat.telemetry.enabled" = false;
-        "rust.build_on_save" = true;
-        "terminal.integrated.fontFamily" = "Fira Code";
-        "vim.sneak" = true;
-        "vim.sneakUseIgnorecaseAndSmartcase" = true;
-        "vim.easymotion" = true;
-        "vim.camelCaseMotion.enable" = true;
-        "vim.normalModeKeyBindings" = [
-          {
-            "before" = [
-              "leader"
-              "w"
-            ];
-            "commands" = [
-              "workbench.action.files.save"
-            ];
-          }
-        ];
-        "vim.leader" = "<space>";
-        "workbench.colorTheme" = "Dracula";
-        "workbench.iconTheme" = "material-icon-theme";
-        "yaml.format.bracketSpacing" = false;
-      };
-      extensions = (with pkgs.vscode-extensions; [
+        }
+      ];
+      "redhat.telemetry.enabled" = false;
+      "rust.build_on_save" = true;
+      "terminal.integrated.fontFamily" = "Fira Code";
+      "vim.sneak" = true;
+      "vim.sneakUseIgnorecaseAndSmartcase" = true;
+      "vim.easymotion" = true;
+      "vim.camelCaseMotion.enable" = true;
+      "vim.normalModeKeyBindings" = [
+        {
+          "before" = [
+            "leader"
+            "w"
+          ];
+          "commands" = [
+            "workbench.action.files.save"
+          ];
+        }
+      ];
+      "vim.leader" = "<space>";
+      "workbench.colorTheme" = "Dracula";
+      "workbench.iconTheme" = "material-icon-theme";
+      "yaml.format.bracketSpacing" = false;
+    };
+    extensions =
+      (with pkgs.vscode-extensions; [
         bungcip.better-toml
         donjayamanne.githistory
         dracula-theme.theme-dracula
@@ -57,12 +59,14 @@
         gruntfuggly.todo-tree
         james-yu.latex-workshop
         matklad.rust-analyzer
+        nvarner.typst-lsp
         pkief.material-icon-theme
         redhat.vscode-yaml
         skyapps.fish-vscode
         tamasfe.even-better-toml
         vscodevim.vim
-      ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+      ])
+      ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "advanced-new-file";
           publisher = "patbenatar";
@@ -82,6 +86,5 @@
           sha256 = "gMkifN17VZbwYMsd9pY6gp5N/zXR+lLTHrZamrr0kDo=";
         }
       ];
-
   };
 }
