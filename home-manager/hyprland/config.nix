@@ -48,7 +48,6 @@ in {
         "swaybg -m fill -i $(find ~/Pictures/wallpapers/ -maxdepth 1 -type f) &"
         "hyprctl setcursor Bibata-Modern-Classic 24 &"
         "ags -b hypr"
-        "hypridle"
         "[workspace 1 silent] firefox"
         "[silent] signal-desktop"
       ];
@@ -166,6 +165,7 @@ in {
         "$mainMod, space, ${e} -t launcher" # launch desktop applications
         # "$mainMod, tab, hyprexpo:expo, toggle"
         # "ALT, SPACE, overview:toggle" # toggle the window on focus to fullscreen
+        "$mainMod, tab, ${e} -t overview"
         "$mainMod, tab, workspace, m+1"
         "$mainMod SHIFT, tab, workspace, m-1"
 
@@ -284,17 +284,18 @@ in {
         "idleinhibit always, class:^(.*Twitch.*)$"
       ];
 
-      # plugin = {
-      #   hyprexpo = {
-      #     columns = 3;
-      #     gap_size = 5;
-      #     bg_col = "rgb(232323)";
-      #     workspace_method = "center current";
-      #     enable_gesture = true;
-      #     gesture_distance = 300;
-      #     gesture_positive = false;
-      #   };
-      # };
+      plugin = {
+        overview = {
+          centerAligned = true;
+          hideTopLayers = true;
+          hideOverlayLayers = true;
+          showNewWorkspace = true;
+          exitOnClick = true;
+          exitOnSwitch = true;
+          drawActiveWorkspace = true;
+          reverseSwipe = true;
+        };
+      };
     };
   };
 }

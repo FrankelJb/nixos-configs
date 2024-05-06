@@ -4,7 +4,6 @@
   ...
 }: {
   services.hypridle = {
-    enable = true;
     listeners = [
       {
         timeout = 1800; # in seconds

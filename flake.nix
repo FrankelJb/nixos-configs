@@ -16,7 +16,7 @@
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
 
     hyprland = {
-      url = "github:hyprwm/Hyprland";
+      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland-plugins = {
@@ -27,10 +27,10 @@
     hypridle.url = "github:hyprwm/hypridle";
     hyprpicker.url = "github:hyprwm/hyprpicker";
 
-    # Hyprspace = {
-    #   url = "github:KZDKM/Hyprspace";
-    #   inputs.hyprland.follows = "hyprland";
-    # };
+    Hyprspace = {
+      url = "github:KZDKM/Hyprspace";
+      inputs.hyprland.follows = "hyprland";
+    };
 
     matugen.url = "github:InioX/matugen";
 
