@@ -8,17 +8,24 @@
     ./keymaps.nix
     ./options.nix
     # TODO: install session saving
+    ./plugins/aerial.nix
     ./plugins/barbar.nix
     ./plugins/cmp.nix
+    ./plugins/conform.nix
+    ./plugins/diffview.nix
     ./plugins/gitsigns.nix
+    ./plugins/harpoon.nix
     ./plugins/lazygit.nix
     ./plugins/lsp.nix
     ./plugins/lualine.nix
     ./plugins/mini.nix
     ./plugins/neo-tree.nix
     ./plugins/rustaceanvim.nix
+    ./plugins/spectre.nix
     ./plugins/telescope.nix
     ./plugins/todo-comments.nix
+    ./plugins/treesitter.nix
+    ./plugins/undotree.nix
     ./plugins/which-key.nix
     ./plugins/yanky.nix
   ];
@@ -49,28 +56,6 @@
       alpha = {
         enable = true;
         theme = "dashboard";
-      };
-      conform-nvim = {
-        enable = true;
-        formatOnSave = ''
-          {
-            timeout_ms = 500,
-            lsp_fallback = true,
-          }
-        '';
-        formattersByFt = {
-          lua = ["stylua"];
-          javascript = [["prettierd" "prettier"]];
-          nix = ["alejandra"];
-          python = ["isort" "black"];
-          typescript = [["prettierd" "prettier"]];
-          yaml = ["yamlls"];
-          # Use the "*" filetype to run formatters on all filetypes.
-          "*" = ["codespell"];
-          # Use the "_" filetype to run formatters on filetypes that don't
-          # have other formatters configured.
-          "_" = ["trim_whitespace"];
-        };
       };
       crates-nvim.enable = true;
       floaterm.enable = true;
@@ -117,10 +102,6 @@
       nvim-colorizer.enable = true;
       persistence.enable = true;
       rainbow-delimiters.enable = true;
-      treesitter = {
-        enable = true;
-        indent = true;
-      };
       treesitter-textobjects.enable = true;
       treesitter-context.enable = true;
       ts-context-commentstring.enable = true;
