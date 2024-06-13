@@ -11,7 +11,6 @@
 
         nixvimInjections = true;
 
-        folding = true;
         indent = true;
 
         grammarPackages = with config.programs.nixvim.plugins.treesitter.package.builtGrammars; [

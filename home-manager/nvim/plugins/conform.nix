@@ -153,7 +153,7 @@
             "xmlformat"
             "xmllint"
           ];
-          yaml = [ "yamlfmt" ];
+          # yaml = [ "yamlfmt" ];
           zig = [ "zigfmt" ];
           "_" = [ "trim_whitespace" ];
         };

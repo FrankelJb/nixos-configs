@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.kitty = {
     enable = true;
 
@@ -14,6 +15,7 @@
       background_opacity = "0.95";
       scrollback_lines = 10000;
       enable_audio_bell = false;
+      notify_on_cmd_finish = "invisible 10.0 command notify-send job finished";
       mouse_hide_wait = 60;
 
       ## Tabs

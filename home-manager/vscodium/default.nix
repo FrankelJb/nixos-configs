@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
@@ -39,9 +40,7 @@
             "leader"
             "w"
           ];
-          "commands" = [
-            "workbench.action.files.save"
-          ];
+          "commands" = [ "workbench.action.files.save" ];
         }
       ];
       "vim.leader" = "<space>";
@@ -58,9 +57,9 @@
         editorconfig.editorconfig
         gruntfuggly.todo-tree
         james-yu.latex-workshop
-        matklad.rust-analyzer
         nvarner.typst-lsp
         pkief.material-icon-theme
+        rust-lang.rust-analyzer
         redhat.vscode-yaml
         skyapps.fish-vscode
         tamasfe.even-better-toml

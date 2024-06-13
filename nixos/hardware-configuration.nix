@@ -7,40 +7,59 @@
   pkgs,
   modulesPath,
   ...
-}: {
-  imports = [
-    (modulesPath + "/installer/scan/not-detected.nix")
-  ];
+}:
+{
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
   boot = {
     initrd = {
-      availableKernelModules = ["vmd" "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod"];
-      kernelModules = [];
+      availableKernelModules = [
+        "vmd"
+        "xhci_pci"
+        "ahci"
+        "nvme"
+        "usb_storage"
+        "usbhid"
+        "sd_mod"
+      ];
+      kernelModules = [ ];
       luks.devices = {
         "system".device = "/dev/disk/by-uuid/ead80a68-67f9-4524-b2b7-02434cfa72e5";
         "nvme1".device = "/dev/disk/by-uuid/b6812986-0baa-446e-aeff-b0ab60eab7c1";
         "nvme2".device = "/dev/disk/by-uuid/5a4efd4c-30df-416d-93c5-01623ed58ba1";
       };
     };
-    kernelModules = ["kvm-intel"];
-    extraModulePackages = [];
+    kernelModules = [ "kvm-intel" ];
+    kernelPackages = pkgs.linuxPackages_latest;
+    kernelParams = [ "nvidia_drm.fbdev=1" ];
+    extraModulePackages = [ ];
   };
   fileSystems = {
     "/" = {
       device = "/dev/disk/by-uuid/f278a852-799a-4a4a-8dcd-1a7dd2ea67d1";
       fsType = "btrfs";
-      options = ["subvol=root" "compress=zstd"];
+      options = [
+        "subvol=root"
+        "compress=zstd"
+      ];
     };
 
     "/home" = {
       device = "/dev/disk/by-uuid/f278a852-799a-4a4a-8dcd-1a7dd2ea67d1";
       fsType = "btrfs";
-      options = ["subvol=home" "compress=zstd"];
+      options = [
+        "subvol=home"
+        "compress=zstd"
+      ];
     };
 
     "/nix" = {
       device = "/dev/disk/by-uuid/f278a852-799a-4a4a-8dcd-1a7dd2ea67d1";
       fsType = "btrfs";
-      options = ["subvol=nix" "noatime" "compress=std"];
+      options = [
+        "subvol=nix"
+        "noatime"
+        "compress=zstd"
+      ];
     };
 
     "/boot" = {
@@ -51,17 +70,23 @@
     "/data/nvme1" = {
       device = "/dev/disk/by-uuid/7311782f-8aca-4974-94ea-5d5cf0a742f3";
       fsType = "btrfs";
-      options = ["subvol=@storage" "compress=zstd"];
+      options = [
+        "subvol=@storage"
+        "compress=zstd"
+      ];
     };
 
     "/data/nvme2" = {
       device = "/dev/disk/by-uuid/9168a63d-3d54-4aa6-bb90-34abe5ac62a9";
       fsType = "btrfs";
-      options = ["subvol=@storage" "compress=zstd"];
+      options = [
+        "subvol=@storage"
+        "compress=zstd"
+      ];
     };
   };
 
-  swapDevices = [];
+  swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's

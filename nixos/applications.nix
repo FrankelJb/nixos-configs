@@ -1,13 +1,11 @@
+{ inputs, pkgs, ... }:
 {
-  inputs,
-  pkgs,
-  ...
-}: {
   environment.systemPackages = with pkgs; [
     duf
     gnome.gnome-disk-utility
     gnome.nautilus
     hexchat
+    monero-gui
     mullvad-vpn
     mullvad-browser
     neovide

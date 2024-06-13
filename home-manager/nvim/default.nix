@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     deadnix
     statix
@@ -65,9 +66,9 @@
       lint = {
         enable = true;
         lintersByFt = {
-          nix = ["statix"];
-          lua = ["selene"];
-          python = ["flake8"];
+          nix = [ "statix" ];
+          lua = [ "selene" ];
+          python = [ "flake8" ];
         };
       };
       lspkind.enable = true;
