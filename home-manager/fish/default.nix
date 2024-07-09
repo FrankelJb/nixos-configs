@@ -1,12 +1,7 @@
+{ lib, pkgs, ... }:
 {
-  lib,
-  pkgs,
-  ...
-}: {
   xdg.configFile."fish/functions" = {
-    source = lib.cleanSourceWith {
-      src = lib.cleanSource ./functions/.;
-    };
+    source = lib.cleanSourceWith { src = lib.cleanSource ./functions/.; };
     recursive = true;
   };
   programs.fish = {
@@ -15,6 +10,7 @@
     interactiveShellInit = ''
       bind \cr _atuin_search
       bind -M insert \cr _atuin_search
+      direnv hook fish | source
     '';
 
     plugins = [

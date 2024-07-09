@@ -65,7 +65,7 @@ const options = mkOptions(OPTIONS, {
   bar: {
     flatButtons: opt(true),
     position: opt<"top" | "bottom">("top"),
-    corners: opt(true),
+    corners: opt(50),
     layout: {
       start: opt<Array<import("widget/bar/Bar").BarWidget>>([
         "launcher",
@@ -74,9 +74,7 @@ const options = mkOptions(OPTIONS, {
         "expander",
         "messages",
       ]),
-      center: opt<Array<import("widget/bar/Bar").BarWidget>>([
-        "date",
-      ]),
+      center: opt<Array<import("widget/bar/Bar").BarWidget>>(["date"]),
       end: opt<Array<import("widget/bar/Bar").BarWidget>>([
         "media",
         "expander",
@@ -123,10 +121,7 @@ const options = mkOptions(OPTIONS, {
       action: opt(() => App.toggleWindow("datemenu")),
     },
     systray: {
-      ignore: opt([
-        "KDE Connect Indicator",
-        "spotify-client",
-      ]),
+      ignore: opt(["KDE Connect Indicator", "spotify-client"]),
     },
     media: {
       monochrome: opt(true),
@@ -206,7 +201,7 @@ const options = mkOptions(OPTIONS, {
       unit: opt<"metric" | "imperial" | "standard">("metric"),
       key: opt<string>(
         JSON.parse(Utils.readFile(`${App.configDir}/.weather`) || "{}")?.key ||
-        "",
+          "",
       ),
       cities: opt<Array<number>>(
         JSON.parse(Utils.readFile(`${App.configDir}/.weather`) || "{}")

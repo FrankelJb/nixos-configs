@@ -33,6 +33,7 @@
         denols.enable = true;
         lua-ls.enable = true;
         nil_ls.enable = true;
+        pylsp.enable = true;
         # typst-lsp.enable = true;
         yamlls.enable = true;
       };
@@ -73,7 +74,10 @@
         key = "<leader>cc";
         action = "vim.lsp.codelens.run";
         options.desc = "Run Codelens";
-        mode = ["n" "v"];
+        mode = [
+          "n"
+          "v"
+        ];
       }
       {
         key = "<leader>cC";

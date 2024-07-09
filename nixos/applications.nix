@@ -1,6 +1,7 @@
 { inputs, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+    btrfs-assistant
     duf
     gnome.gnome-disk-utility
     gnome.nautilus
@@ -12,7 +13,9 @@
     restic
     rustic-rs
     pavucontrol
+    qimgv
     qbittorrent
+    snapper
     typst
     typst-lsp
     usbutils

@@ -1,8 +1,5 @@
+{ inputs, pkgs, ... }:
 {
-  inputs,
-  pkgs,
-  ...
-}: {
   home.packages = with pkgs; [
     bottom
     entr # perform action when file change
@@ -25,6 +22,7 @@
     toipe # typing test in the terminal
     typescript
     cinnamon.nemo-with-extensions # file manager
+    ungoogled-chromium
     yazi # terminal file manager
     youtube-dl
     gnome.zenity

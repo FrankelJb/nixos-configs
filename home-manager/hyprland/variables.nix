@@ -10,7 +10,7 @@
     DISABLE_QT5_COMPAT = "0";
     DIRENV_LOG_FORMAT = "";
     GBM_BACKEND = "nvidia-drm";
-    GTK_THEME = "Catppuccin-Mocha-Compact-Lavender-Dark";
+    GTK_THEME = "Dracula";
     LIBVA_DRIVER_NAME = "nvidia";
     MOZ_ENABLE_WAYLAND = "1";
     NIXOS_OZONE_WL = "1";

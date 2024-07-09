@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   services = {
     dbus.enable = true;
     devmon.enable = true;

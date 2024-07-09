@@ -1,18 +1,16 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: let
+{ pkgs, inputs, ... }:
+let
   # TODO: get repo wide username working
   username = "beans";
-in {
-  imports = [
-    inputs.home-manager.nixosModules.home-manager
-  ];
+in
+{
+  imports = [ inputs.home-manager.nixosModules.home-manager ];
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
-    extraSpecialArgs = {inherit inputs username;};
+    extraSpecialArgs = {
+      inherit inputs username;
+    };
     users.${username} = {
       imports = [
         inputs.hyprland.homeManagerModules.default
@@ -30,7 +28,10 @@ in {
 
   users.users.${username} = {
     description = "${username}";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     initialPassword = "correcthorsebatterystaple";
     isNormalUser = true;
     openssh.authorizedKeys.keys = [
@@ -38,5 +39,5 @@ in {
     ];
     shell = pkgs.bash;
   };
-  nix.settings.allowed-users = ["${username}"];
+  nix.settings.allowed-users = [ "${username}" ];
 }
